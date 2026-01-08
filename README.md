@@ -6,16 +6,16 @@ Este proyecto fue desarrollado con orgullo por **H12-25-L-Equipo 11-Data Science
 
 ## 👥 Equipo de Desarrollo
 
-| Nombre                              | Especialización     | País | Horario        | Redes                                   |
-| ----------------------------------- | ------------------- | ---- | -------------- | --------------------------------------- |
-| Miguel Buitrago                     | Data Scientist      | 🇨🇴   | UTC -5         | [LinkedIn](https://www.linkedin.com/)   |
-| Franco Daniel Luvisotti Junco       | Backend Developer   | 🇦🇷   | 8 - 14 hs (UTC -3) | [LinkedIn](https://www.linkedin.com/)   |
-| Matias Fanucchi                     | Data Engineer       | 🇦🇷   | 8 - 12 hs (UTC -3) | [LinkedIn](https://www.linkedin.com/) / [GitHub](https://github.com/) |
-| Juan Eduardo Garcia Larrazabal      | Backend Developer   | 🇸🇻   | 8 - 12 hs (UTC -6) | [LinkedIn](https://www.linkedin.com/) / [GitHub](https://github.com/) |
-| Cristian Esteban Maida              | Backend Developer   | 🇦🇷   | 8 - 12 hs (UTC -3) | [LinkedIn](https://www.linkedin.com/)   |
-| Daisy Quinteros                     | Data Scientist      | 🇨🇱   | 8 - 12 hs (UTC -3) | [LinkedIn](https://www.linkedin.com/)   |
-| Brian Exequiel Maciel               | Backend Developer   | 🇦🇷   | 8 - 12 hs (UTC -3) | [LinkedIn](https://www.linkedin.com/) / [GitHub](https://github.com/) |
-| Jose Luis Riveros                   | Backend Developer   | 🇨🇱   | -              | [LinkedIn](https://www.linkedin.com/)   |
+| Nombre                              | Especialización     | País | Horario        | Redes                                                                             |
+| ----------------------------------- | ------------------- | ---- | -------------- | --------------------------------------------------------------------------------- |
+| Miguel Buitrago                     | Data Scientist      | 🇨🇴   | UTC -5         | [LinkedIn](https://www.linkedin.com/) / [GitHub](https://github.com/MiguelonMigue)   |
+| Franco Daniel Luvisotti Junco       | Backend Developer   | 🇦🇷   | 8 - 14 hs (UTC -3) | [LinkedIn](https://www.linkedin.com/) / [GitHub](https://github.com/FrancoLuvisotti) |
+| Matias Fanucchi                     | Data Engineer       | 🇦🇷   | 8 - 12 hs (UTC -3) | [LinkedIn](https://www.linkedin.com/) / [GitHub](https://github.com/)             |
+| Juan Eduardo Garcia Larrazabal      | Backend Developer   | 🇸🇻   | 8 - 12 hs (UTC -6) | [LinkedIn](https://www.linkedin.com/) / [GitHub](https://github.com/)             |
+| Cristian Esteban Maida              | Backend Developer   | 🇦🇷   | 8 - 12 hs (UTC -3) | [LinkedIn](https://www.linkedin.com/) / [GitHub](https://github.com/CristianEstMaida) |
+| Daisy Quinteros                     | Data Scientist      | 🇨🇱   | 8 - 12 hs (UTC -3) | [LinkedIn](https://www.linkedin.com/) / [GitHub](https://github.com/veterydaisy)     |
+| Brian Exequiel Maciel               | Backend Developer   | 🇦🇷   | 8 - 12 hs (UTC -3) | [LinkedIn](https://www.linkedin.com/) / [GitHub](https://github.com/)             |
+| Jose Luis Riveros                   | Backend Developer   | 🇨🇱   | -              | [LinkedIn](https://www.linkedin.com/)                                             |
 
 ---
 
@@ -57,13 +57,13 @@ El proyecto está organizado en módulos independientes dentro del mismo reposit
 
 ```
 repo_DataScience/
-├── app/                  # NÚCLEO: Backend (Java Spring Boot) y configuración DB
-│   └── src/              # Código fuente Java
-├── churn-service/        # INTELIGENCIA: Servicio de Python (Modelos de IA)
-│   ├── notebooks/        # Jupyter Notebooks de entrenamiento
-│   ├── model/            # Archivos binarios del modelo (.pkl)
-│   └── src/              # API de inferencia
-├── frontend/             # VISUAL: Interfaz de usuario (Vaadin / Web)
+├── app/                  # NÚCLEO: Backend con Java Spring Boot y UI con Vaadin
+│   └── src/              # Código fuente de la aplicación Java
+├── churn-service/        # INTELIGENCIA: Servicio de Python para predicciones
+│   ├── app.py            # API para la inferencia del modelo de IA
+│   └── *.joblib          # Modelo de IA entrenado
+├── frontend/             # VISUAL: Interfaz de usuario moderna con React
+│   ├── src/              # Código fuente de la aplicación React
 ├── .vscode/              # Configuración para desarrolladores (VS Code)
 ├── .gitignore            # Archivos que Git debe ignorar
 └── README.md             # Documentación oficial del proyecto
