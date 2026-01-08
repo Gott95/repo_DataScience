@@ -52,7 +52,7 @@ def predict_churn(data: CustomerData):
         'usage_time': data.usage_time,
         'login_frequency': data.login_frequency,
         'total_spend': data.total_spend,
-        # 'churn' se incluye solo por estructura si realmente lo necesitas; no es usado para predecir
+        # 'churn' se incluye solo por estructura, si realmente se llega a necesitar; no es usado para predecir
         'churn': 0,
         'contract_type_two year': contract_val,
         'subscription_type_premium': sub_val,
