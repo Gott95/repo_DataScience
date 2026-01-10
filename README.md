@@ -1,4 +1,10 @@
-# 📊 ChurnInsight - Predicción de Retención de Clientes
+# 📊 ChurnInsight - Predicción Inteligente de Abandono de Clientes
+
+![Estado](https://img.shields.io/badge/Estado-Producción-green)
+![Versión](https://img.shields.io/badge/Versión-1.0-blue)
+![Licencia](https://img.shields.io/badge/Licencia-MIT-yellow)
+
+---
 
 Una solución integral para analizar, predecir y reducir la tasa de abandono de clientes (Churn Rate) mediante Inteligencia Artificial, soportada por una arquitectura modular y escalable.
 
@@ -212,17 +218,6 @@ Profundizando en el "por qué" del abandono.
 ![Formulario Predicción](https://github.com/Gott95/repo_DataScience/blob/main/frontend/src/assets/Grafico.png)
 
 ---
-
-
-
-# 📊 ChurnInsight - Predicción Inteligente de Abandono de Clientes
-
-![Estado](https://img.shields.io/badge/Estado-Producción-green)
-![Versión](https://img.shields.io/badge/Versión-1.0-blue)
-![Licencia](https://img.shields.io/badge/Licencia-MIT-yellow)
-
----
-
 
 ## 🆘 Solución de Problemas Comunes
 
