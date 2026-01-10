@@ -202,12 +202,19 @@ Profundizando en el "por qué" del abandono.
 ## 🖼️ Vista Previa
 
 ### Dashboard Principal
-![Dashboard ChurnInsight](docs/images/dashboard-preview.png)
+![Dashboard ChurnInsight](https://github.com/Gott95/repo_DataScience/blob/main/frontend/src/assets/Dashboard.png)
 
 ### Formulario de Predicción
-![Formulario Predicción](docs/images/prediction-form.png)
-📝 VERSIÓN OPTIMIZADA DEL ENCABEZADO:
-markdown
+![Formulario Predicción](https://github.com/Gott95/repo_DataScience/blob/main/frontend/src/assets/Formulario.png)
+
+
+### Gráfico de Análisis
+![Formulario Predicción](https://github.com/Gott95/repo_DataScience/blob/main/frontend/src/assets/Grafico.png)
+
+---
+
+
+
 # 📊 ChurnInsight - Predicción Inteligente de Abandono de Clientes
 
 ![Estado](https://img.shields.io/badge/Estado-Producción-green)
