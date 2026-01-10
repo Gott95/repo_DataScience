@@ -209,13 +209,15 @@ Profundizando en el "por qué" del abandono.
 
 ### Dashboard Principal
 ![Dashboard ChurnInsight](https://github.com/Gott95/repo_DataScience/blob/main/frontend/src/assets/Dashboard.png)
+![Dashboard con Datos](https://github.com/Gott95/repo_DataScience/blob/main/frontend/src/assets/Dashboard%20con%20datos.png)
 
 ### Formulario de Predicción
 ![Formulario Predicción](https://github.com/Gott95/repo_DataScience/blob/main/frontend/src/assets/Formulario.png)
 
 
 ### Gráfico de Análisis
-![Formulario Predicción](https://github.com/Gott95/repo_DataScience/blob/main/frontend/src/assets/Grafico.png)
+![Gráfico](https://github.com/Gott95/repo_DataScience/blob/main/frontend/src/assets/Grafico.png)
+![Gráfico](https://github.com/Gott95/repo_DataScience/blob/main/frontend/src/assets/Grafico.png)
 
 ---
 
