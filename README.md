@@ -217,7 +217,7 @@ Profundizando en el "por qué" del abandono.
 
 ### Gráfico de Análisis
 ![Gráfico](https://github.com/Gott95/repo_DataScience/blob/main/frontend/src/assets/Grafico.png)
-![Gráfico](https://github.com/Gott95/repo_DataScience/blob/main/frontend/src/assets/Grafico.png)
+![Gráfico con Datos](https://github.com/Gott95/repo_DataScience/blob/main/frontend/src/assets/Grafico%20con%20datos.png)
 
 ---
 
