@@ -1,8 +1,28 @@
-# 📊 ChurnInsight - Predicción Inteligente de Abandono de Clientes
+# 📊 ChurnInsight - Predicción Inteligente de Abandono
 
-![Estado](https://img.shields.io/badge/Estado-Producción-green)
-![Versión](https://img.shields.io/badge/Versión-1.0-blue)
-![Licencia](https://img.shields.io/badge/Licencia-MIT-yellow)
+<div align="left">
+  <img src="https://img.shields.io/badge/Estado-En_Desarrollo-orange?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Versión-1.0.0-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Licencia-MIT-yellow?style=for-the-badge" />
+</div>
+
+<br />
+
+<div align="left">
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" />
+  <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" />
+  
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+  
+  <img src="https://img.shields.io/badge/Oracle_Cloud-F80000?style=for-the-badge&logo=oracle&logoColor=white" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+</div>
+
+---
 
 ---
 
@@ -14,9 +34,9 @@ Este proyecto fue desarrollado con orgullo por **H12-25-L-Equipo 11-Data Science
 
 | Componente | Estado | Versión |
 |------------|--------|---------|
-| Backend Java | ✅ Producción | v1.0 |
-| Servicio Python | ✅ Producción | v1.0 |
-| Frontend Vaadin | ✅ Producción | v1.0 |
+| Backend Java | 📦 Listo para Despliegue | v1.0 |
+| Servicio Python | 📦 Listo para Despliegue | v1.0 |
+| Frontend React | 📦 Listo para Despliegue | v1.0 |
 | Modelo ML | ✅ Entrenado | v2.1 |
 
 ---
