@@ -3,10 +3,10 @@ import './index.css'
 import ChurnForm from './components/ChurnForm'
 import PredictionHistory from './components/PredictionHistory'
 import RiskModal from './components/RiskModal'
-import ChurnDrawer from './components/ChurnDrawer' // Importamos el Drawer nuevo
+import ChurnDrawer from './components/ChurnDrawer' 
 import { getHistory } from './services/churnService'
 import type { PredictionRecord } from './types/ChurnTypes'
-import { Activity, Users, TrendingUp } from 'lucide-react' // Iconos opcionales para las cards
+import { Activity, Users, TrendingUp } from 'lucide-react' 
 
 // Componente pequeño para las cards
 function StatsCard({ title, value, accentClass, icon: Icon }: { title: string; value: string | number; accentClass?: string, icon?: any }) {
@@ -26,7 +26,7 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [refreshKey, setRefreshKey] = useState(0)
   
-  // Estados para modales
+  
   const [modalOpen, setModalOpen] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
 
@@ -46,7 +46,6 @@ function App() {
 
   const handlePredicted = () => {
     setRefreshKey(s => s + 1)
-    // No cerramos el drawer inmediatamente aquí, lo maneja el form con un timeout para UX
     setTimeout(() => setDrawerOpen(false), 1600);
   }
 
@@ -59,16 +58,23 @@ function App() {
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-white font-sans selection:bg-cyan-500/30">
       
-      {/* Navbar simple */}
+      
       <nav className="w-full border-b border-gray-800 bg-[#0f0f0f]/80 backdrop-blur sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             <div className="flex items-center gap-3">
+    
                 <img 
-                  src="/logo.png"
-                  alt="ChurnInsight Logo" 
-                  className="h-8 w-auto" 
+                    src="/logo.png"
+                    alt="ChurnInsight Logo" 
+                    className="h-8 w-auto" 
                 />
-                <span className="font-bold text-xl tracking-tight">ChurnInsight</span>
+
+                
+                <div className="leading-none"> 
+                    <span className="font-bold text-xl tracking-tight text-white">Churn</span>
+                    <span className="font-bold text-xl tracking-tight text-gray-400">Insight</span>
+                </div>
+
             </div>
             <div className="text-xs text-gray-500 hidden sm:block">
                 v1.0.0 • Data Science Equipo 11
@@ -78,7 +84,7 @@ function App() {
 
       <main className="max-w-7xl mx-auto p-6 space-y-8">
         
-        {/* Header Section */}
+        
         <header className="py-4">
             <h1 className="text-3xl font-bold mb-2 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
                 Dashboard de Retención
@@ -86,14 +92,14 @@ function App() {
             <p className="text-gray-400">Visualiza el riesgo de tus clientes y genera nuevas predicciones con IA.</p>
         </header>
 
-        {/* Stats Grid */}
+        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <StatsCard title="Total Análisis" value={total} icon={Users} />
           <StatsCard title="Predicciones Hoy" value={predictionsToday} icon={Activity} />
-          <StatsCard title="Tasa de Riesgo Global" value={`${riskRate}%`} accentClass={riskRate > 50 ? "text-red-500" : "text-emerald-400"} icon={TrendingUp} />
+          <StatsCard title="Tasa de Riesgo Global" value={`${riskRate}%`} accentClass={riskRate > 50 ? "text-red-500" : "text-cyan-500"} icon={TrendingUp} />
         </div>
 
-        {/* Main Content: Full Width Table */}
+        
         <div className="w-full">
             <PredictionHistory 
                 history={history} 
@@ -104,14 +110,14 @@ function App() {
         </div>
       </main>
 
-      {/* Footer */}
+      
       <footer className="max-w-7xl mx-auto px-6 py-8 text-center border-t border-gray-800 mt-8">
         <p className="text-gray-600 text-sm">
             Creado por <strong>Grupo-H12-25-L-Equipo-11-Data Science</strong>
         </p>
       </footer>
 
-      {/* Modals & Drawers */}
+      
       <RiskModal open={modalOpen} onClose={() => setModalOpen(false)} history={history} />
       
       <ChurnDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
