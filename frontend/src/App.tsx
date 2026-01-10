@@ -3,14 +3,20 @@ import './index.css'
 import ChurnForm from './components/ChurnForm'
 import PredictionHistory from './components/PredictionHistory'
 import RiskModal from './components/RiskModal'
+import ChurnDrawer from './components/ChurnDrawer' // Importamos el Drawer nuevo
 import { getHistory } from './services/churnService'
 import type { PredictionRecord } from './types/ChurnTypes'
+import { Activity, Users, TrendingUp } from 'lucide-react' // Iconos opcionales para las cards
 
-function StatsCard({ title, value, accentClass }: { title: string; value: string | number; accentClass?: string }) {
+// Componente pequeño para las cards
+function StatsCard({ title, value, accentClass, icon: Icon }: { title: string; value: string | number; accentClass?: string, icon?: any }) {
   return (
-    <div className="p-4 rounded-lg bg-gray-800/60 border border-gray-700 backdrop-blur-sm">
-      <div className="text-sm text-gray-300">{title}</div>
-      <div className={`mt-2 text-2xl font-bold ${accentClass ?? 'text-white'}`}>{value}</div>
+    <div className="p-6 rounded-xl bg-gray-800/40 border border-gray-700 backdrop-blur-sm flex items-start justify-between hover:bg-gray-800/60 transition-colors">
+      <div>
+        <div className="text-sm font-medium text-gray-400 mb-1">{title}</div>
+        <div className={`text-3xl font-bold ${accentClass ?? 'text-white'}`}>{value}</div>
+      </div>
+      {Icon && <div className="p-3 bg-gray-700/30 rounded-lg text-gray-400"><Icon size={24} /></div>}
     </div>
   )
 }
@@ -19,7 +25,10 @@ function App() {
   const [history, setHistory] = useState<PredictionRecord[]>([])
   const [loading, setLoading] = useState(false)
   const [refreshKey, setRefreshKey] = useState(0)
+  
+  // Estados para modales
   const [modalOpen, setModalOpen] = useState(false)
+  const [drawerOpen, setDrawerOpen] = useState(false)
 
   const load = async () => {
     setLoading(true)
@@ -37,6 +46,8 @@ function App() {
 
   const handlePredicted = () => {
     setRefreshKey(s => s + 1)
+    // No cerramos el drawer inmediatamente aquí, lo maneja el form con un timeout para UX
+    setTimeout(() => setDrawerOpen(false), 1600);
   }
 
   const total = history.length
@@ -46,31 +57,67 @@ function App() {
   const riskRate = total === 0 ? 0 : Math.round((highRisk / total) * 100)
 
   return (
-    <div className="min-h-screen bg-[#121212] text-white p-6 w-full">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-extrabold mb-6">ChurnInsight Dashboard</h1>
-        <h1 className="text-xl font-bold mb-6">Predicción de cancelación de clientes</h1>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <StatsCard title="Total Análisis" value={total} />
-          <StatsCard title="Predicciones Hoy" value={predictionsToday} />
-          <StatsCard title="Tasa de Riesgo" value={`${riskRate}%`} accentClass="text-emerald-400" />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="md:col-span-1">
-            <div className="p-4 rounded-lg bg-gray-800/50 border border-gray-700">
-              <ChurnForm onSuccess={handlePredicted} />
+    <div className="min-h-screen bg-[#0f0f0f] text-white font-sans selection:bg-cyan-500/30">
+      
+      {/* Navbar simple */}
+      <nav className="w-full border-b border-gray-800 bg-[#0f0f0f]/80 backdrop-blur sticky top-0 z-30">
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+                <img 
+                  src="/logo.png"
+                  alt="ChurnInsight Logo" 
+                  className="h-8 w-auto" 
+                />
+                <span className="font-bold text-xl tracking-tight">ChurnInsight</span>
             </div>
-          </div>
-          <div className="md:col-span-2">
-            <PredictionHistory history={history} loading={loading} onOpenRiskModal={() => setModalOpen(true)} />
-          </div>
+            <div className="text-xs text-gray-500 hidden sm:block">
+                v1.0.0 • Data Science Equipo 11
+            </div>
         </div>
-      </div>
+      </nav>
 
+      <main className="max-w-7xl mx-auto p-6 space-y-8">
+        
+        {/* Header Section */}
+        <header className="py-4">
+            <h1 className="text-3xl font-bold mb-2 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                Dashboard de Retención
+            </h1>
+            <p className="text-gray-400">Visualiza el riesgo de tus clientes y genera nuevas predicciones con IA.</p>
+        </header>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <StatsCard title="Total Análisis" value={total} icon={Users} />
+          <StatsCard title="Predicciones Hoy" value={predictionsToday} icon={Activity} />
+          <StatsCard title="Tasa de Riesgo Global" value={`${riskRate}%`} accentClass={riskRate > 50 ? "text-red-500" : "text-emerald-400"} icon={TrendingUp} />
+        </div>
+
+        {/* Main Content: Full Width Table */}
+        <div className="w-full">
+            <PredictionHistory 
+                history={history} 
+                loading={loading} 
+                onOpenRiskModal={() => setModalOpen(true)}
+                onOpenDrawer={() => setDrawerOpen(true)} 
+            />
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="max-w-7xl mx-auto px-6 py-8 text-center border-t border-gray-800 mt-8">
+        <p className="text-gray-600 text-sm">
+            Creado por <strong>Grupo-H12-25-L-Equipo-11-Data Science</strong>
+        </p>
+      </footer>
+
+      {/* Modals & Drawers */}
       <RiskModal open={modalOpen} onClose={() => setModalOpen(false)} history={history} />
-      <h1 className="text-xl font-bold mb-6 text-right">Creado por Grupo-H12-25-L-Equipo-11-Data Science</h1>
+      
+      <ChurnDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+        <ChurnForm onSuccess={handlePredicted} />
+      </ChurnDrawer>
+
     </div>
   )
 }

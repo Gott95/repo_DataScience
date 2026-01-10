@@ -1,0 +1,48 @@
+version: '3.8'
+services:
+  # Base de Datos
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: paty
+      POSTGRES_DB: churn_insight_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  # Servicio Python
+  churn-service:
+    build: ./churn-service
+    restart: always
+    ports:
+      - "8000:8000"
+
+  # Backend Java
+  java-app:
+    build: ./app
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      # Conexión a la DB (fíjate que usa 'db' como host, no localhost)
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/churn_insight_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: paty
+    depends_on:
+      - db
+      - churn-service
+
+  # Frontend React
+  frontend:
+    build: ./frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - java-app
+
+volumes:
+  postgres_data:
