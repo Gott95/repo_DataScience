@@ -4,18 +4,30 @@ Una solución integral para analizar, predecir y reducir la tasa de abandono de 
 
 Este proyecto fue desarrollado con orgullo por **H12-25-L-Equipo 11-Data Science** como parte de la iniciativa One Oracle / Alura Latam y teniendo como medio la plataforma de simulación laboral No Country
 
+## 📈 Estado del Proyecto
+
+| Componente | Estado | Versión |
+|------------|--------|---------|
+| Backend Java | ✅ Producción | v1.0 |
+| Servicio Python | ✅ Producción | v1.0 |
+| Frontend Vaadin | ✅ Producción | v1.0 |
+| Modelo ML | ✅ Entrenado | v2.1 |
+
+---
+
+
 ## 👥 Equipo de Desarrollo
 
 | Nombre                              | Especialización     | País | Horario        | Redes                                                                             |
 | ----------------------------------- | ------------------- | ---- | -------------- | --------------------------------------------------------------------------------- |
-| Miguel Buitrago                     | Data Scientist      | 🇨🇴   | UTC -5         | [LinkedIn](https://www.linkedin.com/) / [GitHub](https://github.com/MiguelonMigue)   |
-| Franco Daniel Luvisotti Junco       | Backend Developer   | 🇦🇷   | 8 - 14 hs (UTC -3) | [LinkedIn](https://www.linkedin.com/) / [GitHub](https://github.com/FrancoLuvisotti) |
-| Matias Fanucchi                     | Data Engineer       | 🇦🇷   | 8 - 12 hs (UTC -3) | [LinkedIn](https://www.linkedin.com/) / [GitHub](https://github.com/)             |
-| Juan Eduardo Garcia Larrazabal      | Backend Developer   | 🇸🇻   | 8 - 12 hs (UTC -6) | [LinkedIn](https://www.linkedin.com/) / [GitHub](https://github.com/)             |
-| Cristian Esteban Maida              | Backend Developer   | 🇦🇷   | 8 - 12 hs (UTC -3) | [LinkedIn](https://www.linkedin.com/) / [GitHub](https://github.com/CristianEstMaida) |
-| Daisy Quinteros                     | Data Scientist      | 🇨🇱   | 8 - 12 hs (UTC -3) | [LinkedIn](https://www.linkedin.com/) / [GitHub](https://github.com/veterydaisy)     |
-| Brian Exequiel Maciel               | Backend Developer   | 🇦🇷   | 8 - 12 hs (UTC -3) | [LinkedIn](https://www.linkedin.com/) / [GitHub](https://github.com/)             |
-| Jose Luis Riveros                   | Backend Developer   | 🇨🇱   | -              | [LinkedIn](https://www.linkedin.com/)                                             |
+| Miguel Buitrago                     | Data Scientist      | 🇨🇴   | UTC -5         | [LinkedIn](https://www.linkedin.com/in/miguelbuitrago536) / [GitHub](https://github.com/MiguelonMigue)   |
+| Franco Daniel Luvisotti Junco       | Backend Developer   | 🇦🇷   | 8 - 14 hs (UTC -3) | [LinkedIn](https://www.linkedin.com/in/franco-luvisotti-junco-674a27254) / [GitHub](https://github.com/FrancoLuvisotti) |
+| Matias Fanucchi                     | Data Engineer       | 🇦🇷   | 8 - 12 hs (UTC -3) | [LinkedIn](https://www.linkedin.com/in/matías-fanucchi-839abb248) / [GitHub](https://github.com/FanucchiM)             |
+| Juan Eduardo Garcia Larrazabal      | Backend Developer   | 🇸🇻   | 8 - 12 hs (UTC -6) | [LinkedIn](https://www.linkedin.com/in/juan-eduardo-garcia-larrazábal-91959a179) / [GitHub](https://github.com/Gott95)             |
+| Cristian Esteban Maida              | Backend Developer   | 🇦🇷   | 8 - 12 hs (UTC -3) | [LinkedIn](https://www.linkedin.com/in/cristian-esteban-maida) / [GitHub](https://github.com/CristianEstMaida) |
+| Daisy Quinteros                     | Data Scientist      | 🇨🇱   | 8 - 12 hs (UTC -3) | [LinkedIn](https://www.linkedin.com/in/daisy-quinteros-silva-5b0450a5) / [GitHub](https://github.com/veterydaisy)     |
+| Brian Exequiel Maciel               | Backend Developer   | 🇦🇷   | 8 - 12 hs (UTC -3) | [LinkedIn](https://linkedin.com/in/brian-exequiel-maciel) / [GitHub](https://github.com/BrianExequielMaciel)             |
+| Jose Luis Riveros                   | Backend Developer   | 🇨🇱   | -              | [LinkedIn](https://www.linkedin.com/in/jose-riveros-0a94928a)                                             |
 
 ---
 
@@ -169,6 +181,42 @@ Para mantener el código ordenado, seguimos este flujo de trabajo:
 
 ---
 
+## 🚀 Roadmap & Próximos Pasos
+### Fase 2: Automatización e Integración (Q2)
+El objetivo es conectar la predicción con la acción inmediata.
+
+- [ ] **Sincronización Bidireccional con CRM:** Integración nativa con Salesforce/HubSpot para actualizar el Churn Score automáticamente en la ficha del cliente.
+- [ ] **Generación de Ofertas con IA (LLMs):** Implementar una API (OpenAI/Llama) que redacte correos de retención personalizados al hacer clic en "Crear Oferta".
+- [ ] **Webhooks & Alertas:** Sistema de notificaciones en tiempo real vía Slack/Email cuando un cliente VIP entra en "Alto Riesgo".
+- [ ] **Dashboard Interactivo 2.0:** Drill-down por cohortes y análisis geográfico de cancelaciones.
+
+### Fase 3: Inteligencia Avanzada (Q3)
+Profundizando en el "por qué" del abandono.
+
+- [ ] **NLP & Análisis de Sentimiento:** Procesamiento de tickets de soporte y transcripciones de llamadas para detectar frustración antes de que sea churn.
+- [ ] **Uplift Modeling:** Nuevo modelo para predecir no solo quién se va, sino quién es persuadible (evitar gastar recursos en causas perdidas).
+- [ ] **Infraestructura MLOps:** Reentrenamiento automático del modelo (Auto-retraining pipeline) basado en nuevos datos históricos.
+
+---
+
+## 🖼️ Vista Previa
+
+### Dashboard Principal
+![Dashboard ChurnInsight](docs/images/dashboard-preview.png)
+
+### Formulario de Predicción
+![Formulario Predicción](docs/images/prediction-form.png)
+📝 VERSIÓN OPTIMIZADA DEL ENCABEZADO:
+markdown
+# 📊 ChurnInsight - Predicción Inteligente de Abandono de Clientes
+
+![Estado](https://img.shields.io/badge/Estado-Producción-green)
+![Versión](https://img.shields.io/badge/Versión-1.0-blue)
+![Licencia](https://img.shields.io/badge/Licencia-MIT-yellow)
+
+---
+
+
 ## 🆘 Solución de Problemas Comunes
 
 *   **Error "Port 8080 is already in use":**
@@ -178,3 +226,105 @@ Para mantener el código ordenado, seguimos este flujo de trabajo:
     *   Verifica usuario y contraseña en `application.properties`.
 *   **Python "pip no reconocido":**
     *   Asegúrate de haber reiniciado tu terminal después de instalar Python.
+
+---
+
+## 📖 Referencia de API
+
+Esta sección documenta los endpoints de la API disponibles en los microservicios.
+
+### Servicio: `app` (Backend Java)
+
+**URL Base:** `http://localhost:8080`
+
+| Método | Endpoint | Descripción | Body (Request) | Body (Response) |
+| --- | --- | --- | --- | --- |
+| `POST` | `/api/churn/predict` | Envía datos de un cliente para obtener una predicción de abandono. La predicción se guarda en la base de datos. | `ChurnRequestDTO` | `ChurnResponseDTO` |
+| `GET` | `/api/churn/history` | Obtiene el historial completo de todas las predicciones de abandono realizadas. | N/A | `List<ChurnPredictionDTO>` |
+
+#### 📝 Modelos de Datos (DTOs)
+
+<details>
+<summary><strong>ChurnRequestDTO</strong></summary>
+
+```json
+{
+  "tenure": "integer",
+  "usage_time": "double",
+  "login_frequency": "double",
+  "total_spend": "double",
+  "contract_type": "string",
+  "subscription_type": "string",
+  "payment_record": "string"
+}
+```
+</details>
+
+<details>
+<summary><strong>ChurnResponseDTO</strong></summary>
+
+```json
+{
+  "prediction": "string",
+  "probability": "double",
+  "status": "string"
+}
+```
+</details>
+
+<details>
+<summary><strong>ChurnPredictionDTO</strong></summary>
+
+```json
+{
+  "id": "long",
+  "customerId": "string",
+  "tenure": "integer",
+  "totalSpend": "double",
+  "prediction": "string",
+  "probability": "double",
+  "createdAt": "LocalDateTime"
+}
+```
+</details>
+
+---
+
+### Servicio: `churn-service` (Motor de IA en Python)
+
+**URL Base:** `http://localhost:8000`
+
+| Método | Endpoint | Descripción | Body (Request) | Body (Response) |
+| --- | --- | --- | --- | --- |
+| `POST` | `/predict` | Recibe los datos de un cliente y devuelve una predicción de abandono junto con la probabilidad. | `CustomerData` | `PredictionResponse` |
+
+#### 📝 Modelos de Datos
+
+<details>
+<summary><strong>CustomerData</strong></summary>
+
+```json
+{
+  "tenure": "integer",
+  "usage_time": "float",
+  "login_frequency": "float",
+  "total_spend": "float",
+  "contract_type": "string",
+  "subscription_type": "string",
+  "payment_record": "string"
+}
+```
+</example>
+</details>
+
+<details>
+<summary><strong>PredictionResponse</strong></summary>
+
+```json
+{
+  "prediction": "string ('HIGH_RISK' o 'LOW_RISK')",
+  "probability": "float",
+  "status": "string ('success')"
+}
+```
+</details>
