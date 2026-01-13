@@ -60,7 +60,6 @@ public class Application implements AppShellConfigurator {
                     
                     
                     if (System.getProperty("os.name").toLowerCase().contains("win")) {
-                        // Probamos ejecutar python directo. Si falla, vuelve a poner "cmd.exe", "/c"...
                         processBuilder.command(pythonExecutableName, scriptName);
                     } else {
                         processBuilder.command(pythonExecutableName, scriptName);
@@ -97,7 +96,6 @@ public class Application implements AppShellConfigurator {
 
         System.out.println("Verificando si el puerto 8000 está libre...");
         try {
-            // 1. Ejecutar netstat para buscar el PID
             Process netstat = new ProcessBuilder("cmd.exe", "/c", "netstat -ano | findstr :8000").start();
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(netstat.getInputStream()))) {
                 String line = reader.readLine();
@@ -106,8 +104,6 @@ public class Application implements AppShellConfigurator {
                     String pid = parts[parts.length - 1];
                     
                     System.out.println("Puerto 8000 ocupado por PID: " + pid + ". Matándolo ahora...");
-                    
-                    // 2. Ejecutar taskkill
                     new ProcessBuilder("taskkill", "/F", "/PID", pid).start().waitFor();
                     System.out.println("Proceso fantasma eliminado. El puerto está libre.");
                 }

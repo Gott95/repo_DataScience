@@ -32,7 +32,6 @@ export default function ChurnForm({ onSuccess }: { onSuccess?: () => void } = {}
     try {
       const res = await predictChurn(form);
       setResult(res);
-      // Retrasamos un poco el cierre para que el usuario vea el resultado
       setTimeout(() => {
         if (res) onSuccess?.();
       }, 1500); 
@@ -43,13 +42,11 @@ export default function ChurnForm({ onSuccess }: { onSuccess?: () => void } = {}
     }
   };
 
-  // Clases comunes para inputs
   const inputClass = "w-full mt-1 p-2.5 rounded-lg bg-gray-900 border border-gray-700 text-gray-100 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors";
   const labelClass = "block text-sm font-medium text-gray-400";
 
   return (
     <div className="space-y-6">
-      {/* Mensaje de Resultado (aparece arriba si existe) */}
       {result && (
         <div className={`p-4 rounded-lg border ${result.prediction.toLowerCase().includes('high') ? 'bg-red-900/20 border-red-700 text-red-200' : 'bg-emerald-900/20 border-emerald-700 text-emerald-200'} animate-in fade-in zoom-in duration-300`}>
           <div className="flex items-center gap-2 mb-2">

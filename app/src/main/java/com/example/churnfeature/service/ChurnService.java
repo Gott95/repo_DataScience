@@ -43,7 +43,6 @@ public class ChurnService {
             responseDTO = new ChurnResponseDTO("error", 0.0, "internal_error");
         }
 
-        // Map to entity and persist
         try {
             ChurnPredictionEntity entity = new ChurnPredictionEntity();
             entity.setCustomerId(null);
@@ -53,7 +52,7 @@ public class ChurnService {
             entity.setProbability(responseDTO.getProbability());
             repository.save(entity);
         } catch (Exception ex) {
-            // swallow persistence exception but keep returning the response DTO
+            
         }
 
         return responseDTO;

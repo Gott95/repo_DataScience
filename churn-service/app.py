@@ -1,4 +1,3 @@
-# app.py
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import joblib
@@ -25,15 +24,14 @@ except Exception as e:
 
 app = FastAPI()
 
-# Definir la estructura de datos que enviará JAVA
 class CustomerData(BaseModel):
     tenure: int
     usage_time: float
     login_frequency: float
     total_spend: float
-    contract_type: str        # Ej: "Two Year", "Month-to-Month"
-    subscription_type: str    # Ej: "Premium", "Basic"
-    payment_record: str       # Ej: "Good", "Delayed"
+    contract_type: str        
+    subscription_type: str    
+    payment_record: str       
 
 
 @app.post("/predict")

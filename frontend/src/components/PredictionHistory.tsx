@@ -5,10 +5,9 @@ interface PredictionHistoryProps {
     history: PredictionRecord[];
     loading: boolean;
     onOpenRiskModal: () => void;
-    onOpenDrawer: () => void; // Nueva prop para abrir el formulario
+    onOpenDrawer: () => void;
 }
 
-// Función para determinar la acción recomendada según la probabilidad
 const getActionBadge = (probability: number) => {
   if (probability < 0.5) {
     return (
@@ -24,7 +23,6 @@ const getActionBadge = (probability: number) => {
       </button>
     );
   } 
-  // Mayor a 0.6
   return (
     <button className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-900/20 transition-all cursor-pointer animate-in zoom-in duration-300">
        Crear Oferta
@@ -35,8 +33,6 @@ const getActionBadge = (probability: number) => {
 export default function PredictionHistory({ history, loading, onOpenRiskModal, onOpenDrawer }: PredictionHistoryProps) {
   return (
     <div className="flex flex-col h-full bg-gray-800/40 border border-gray-700 rounded-xl backdrop-blur-sm overflow-hidden">
-      
-      {/* Header de la Tabla */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-6 border-b border-gray-700 gap-4">
         <div>
             <h2 className="text-xl font-bold text-white">Historial de Predicciones</h2>
@@ -61,8 +57,6 @@ export default function PredictionHistory({ history, loading, onOpenRiskModal, o
           </button>
         </div>
       </div>
-
-      {/* Contenedor de la tabla con scroll limitado */}
       <div className="flex-1 overflow-auto max-h-[600px] scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent">
         <table className="min-w-full table-auto">
           <thead className="sticky top-0 bg-gray-800 z-10 text-xs text-gray-400 uppercase shadow-md">
