@@ -27,7 +27,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      # Conexión a la DB (fíjate que usa 'db' como host, no localhost)
+      # Conexión a la DB (db)
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/churn_insight_db
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: paty

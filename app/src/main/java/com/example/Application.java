@@ -58,7 +58,7 @@ public class Application implements AppShellConfigurator {
                     File pythonServiceDir = new File(projectRoot, "churn-service");
                     processBuilder.directory(pythonServiceDir);
                     
-                    // RECOMENDACIÓN: Intentar ejecutar directo sin cmd.exe para tener mejor control del PID
+                    
                     if (System.getProperty("os.name").toLowerCase().contains("win")) {
                         // Probamos ejecutar python directo. Si falla, vuelve a poner "cmd.exe", "/c"...
                         processBuilder.command(pythonExecutableName, scriptName);
@@ -71,7 +71,7 @@ public class Application implements AppShellConfigurator {
                     System.out.println("Iniciando servicio Python en: " + pythonServiceDir);
                     pythonProcess = processBuilder.start();
                     
-                    // Leer logs en tiempo real
+                    
                     new Thread(() -> {
                         try (var reader = new BufferedReader(new InputStreamReader(pythonProcess.getInputStream()))) {
                             String line;
@@ -91,7 +91,7 @@ public class Application implements AppShellConfigurator {
         };
     }
 
-    // --- NUEVO MÉTODO MÁGICO PARA WINDOWS ---
+    
     private void killProcessOnPort8000() {
         if (!System.getProperty("os.name").toLowerCase().contains("win")) return;
 
@@ -102,8 +102,6 @@ public class Application implements AppShellConfigurator {
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(netstat.getInputStream()))) {
                 String line = reader.readLine();
                 if (line != null && !line.trim().isEmpty()) {
-                    // La línea se ve así: "TCP 0.0.0.0:8000 0.0.0.0:0 LISTENING 12345"
-                    // El PID es el último número.
                     String[] parts = line.trim().split("\\s+");
                     String pid = parts[parts.length - 1];
                     
@@ -119,18 +117,21 @@ public class Application implements AppShellConfigurator {
         }
     }
 
-    // Tu método del navegador (mantenlo igual)
     @EventListener(ApplicationReadyEvent.class)
     public void launchBrowser() {
-         System.setProperty("java.awt.headless", "false"); 
-         // ... (Pega aquí tu código del navegador corregido que te di antes)
          try {
              String url = "http://localhost:8080";
              if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
                  Desktop.getDesktop().browse(new URI(url));
              } else {
+                 // Fallback para sistemas donde Desktop no es soportado, común en Windows
                  new ProcessBuilder("rundll32", "url.dll,FileProtocolHandler", url).start();
              }
-         } catch (Exception e) { e.printStackTrace(); }
+         } catch (Exception e) { 
+             System.err.println("No se pudo abrir el navegador automáticamente. Accede manualmente a http://localhost:8080");
+             // e.printStackTrace(); // Descomentar para depuración
+         }
     }
+
+
 }
