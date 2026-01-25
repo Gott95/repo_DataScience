@@ -113,20 +113,30 @@ public class Application implements AppShellConfigurator {
         }
     }
 
-    @EventListener(ApplicationReadyEvent.class)
+@EventListener(ApplicationReadyEvent.class)
     public void launchBrowser() {
-         try {
-             String url = "http://localhost:8080";
-             if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-                 Desktop.getDesktop().browse(new URI(url));
-             } else {
-                 // Fallback para sistemas donde Desktop no es soportado, común en Windows
-                 new ProcessBuilder("rundll32", "url.dll,FileProtocolHandler", url).start();
-             }
-         } catch (Exception e) { 
-             System.err.println("No se pudo abrir el navegador automáticamente. Accede manualmente a http://localhost:8080");
-             // e.printStackTrace(); // Descomentar para depuración
-         }
+        // 1. EL TRUCO: Verificamos si ya pusimos la bandera "browser.opened"
+        if (System.getProperty("browser.opened") == null) {
+            
+            // 2. Si no existe, la marcamos como "true" inmediatamente
+            System.setProperty("browser.opened", "true");
+
+            try {
+                String url = "http://localhost:8080";
+                
+                // Configuración para evitar errores de "headless" en algunos entornos
+                System.setProperty("java.awt.headless", "false"); 
+
+                if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+                    Desktop.getDesktop().browse(new URI(url));
+                } else {
+                    // Fallback para Windows (CMD)
+                    Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + url);
+                }
+            } catch (Exception e) {
+                System.err.println("⚠ No se pudo abrir el navegador automáticamente.");
+            }
+        }
     }
 
 

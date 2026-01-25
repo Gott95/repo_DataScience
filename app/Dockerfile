@@ -1,7 +1,6 @@
 # Usamos una imagen ligera de Java 17
-FROM eclipse-temurin:17-jdk-alpine
+FROM eclipse-temurin:21-jdk-alpine
 VOLUME /tmp
-# Copiamos el archivo compilado (Asegúrate de compilar antes con maven)
 COPY target/*.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
 

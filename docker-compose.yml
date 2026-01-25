@@ -31,6 +31,9 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/churn_insight_db
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: paty
+      # Conexión al servicio de churn (churn-service)
+      CHURN_PREDICT_HOST: 34.10.78.1
+      CHURN_PREDICT_PORT: 8000
     depends_on:
       - db
       - churn-service

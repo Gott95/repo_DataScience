@@ -1,5 +1,6 @@
 package com.example.churnfeature.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
@@ -15,7 +16,9 @@ public class ChurnService {
 
     private final ChurnRepository repository;
     private final RestTemplate restTemplate;
-    private static final String PREDICT_URL = "http://localhost:8000/predict";
+    
+    @Value("${churn.predict.url}")
+    private String PREDICT_URL;// "http://localhost:8000/predict";
 
     public ChurnService(ChurnRepository repository, RestTemplate restTemplate) {
         this.repository = repository;
