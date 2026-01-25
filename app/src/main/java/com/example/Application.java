@@ -28,7 +28,6 @@ public class Application implements AppShellConfigurator {
     private static Process pythonProcess;
 
     public static void main(String[] args) {
-        // Intento de limpieza al cerrar (funciona si cierras con Ctrl+C en terminal, a veces falla con el botón Stop)
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             if (pythonProcess != null && pythonProcess.isAlive()) {
                 System.out.println("Cerrando servicio Python...");
@@ -42,11 +41,7 @@ public class Application implements AppShellConfigurator {
     @Bean
     public CommandLineRunner runPythonService() {
         return args -> {
-            // PASO 1: LIMPIEZA PREVENTIVA
-            // Antes de iniciar, matamos cualquier cosa que esté en el puerto 8000
             killProcessOnPort8000();
-
-            // PASO 2: INICIAR SERVICIO
             Executors.newSingleThreadExecutor().submit(() -> {
                 try {
                     ProcessBuilder processBuilder = new ProcessBuilder();
@@ -115,22 +110,22 @@ public class Application implements AppShellConfigurator {
 
 @EventListener(ApplicationReadyEvent.class)
     public void launchBrowser() {
-        // 1. EL TRUCO: Verificamos si ya pusimos la bandera "browser.opened"
+        
         if (System.getProperty("browser.opened") == null) {
             
-            // 2. Si no existe, la marcamos como "true" inmediatamente
+            
             System.setProperty("browser.opened", "true");
 
             try {
                 String url = "http://localhost:8080";
                 
-                // Configuración para evitar errores de "headless" en algunos entornos
+                
                 System.setProperty("java.awt.headless", "false"); 
 
                 if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
                     Desktop.getDesktop().browse(new URI(url));
                 } else {
-                    // Fallback para Windows (CMD)
+                    
                     Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + url);
                 }
             } catch (Exception e) {
