@@ -1,5 +1,5 @@
 import type { PredictionRecord } from "../types/ChurnTypes";
-import { PieChart, Plus } from 'lucide-react'
+import { PieChart, Plus, Mail } from 'lucide-react'
 
 interface PredictionHistoryProps {
     history: PredictionRecord[];
@@ -8,7 +8,38 @@ interface PredictionHistoryProps {
     onOpenDrawer: () => void;
 }
 
-const getActionBadge = (probability: number) => {
+// Función para manejar el envío del correo con datos dinámicos
+const sendOfferEmail = (record: PredictionRecord) => {
+    const randomEmail = `cliente.${Math.floor(Math.random() * 10000)}@empresa.com`;
+    
+    const subject = encodeURIComponent("Propuesta exclusiva: Plan de Fidelización");
+    
+    const riskPercentage = (record.probability * 100).toFixed(1);
+    const customerRef = record.customerId || `#${record.id}`;
+    
+    const body = encodeURIComponent(`Hola,
+
+Hemos detectado una oportunidad de retención para el cliente ${customerRef}.
+
+Datos del Análisis:
+- Nivel de Riesgo Detectado: ${riskPercentage}%
+- Fecha de Análisis: ${new Date(record.createdAt).toLocaleDateString()}
+
+Propuesta Sugerida:
+Ofrecer un descuento del 20% en la renovación anual o una actualización gratuita al plan Premium por 3 meses.
+
+Quedo a la espera de su confirmación para proceder.
+
+Saludos,
+Equipo de Customer Success`);
+
+
+    window.location.href = `mailto:${randomEmail}?subject=${subject}&body=${body}`;
+};
+
+const getActionBadge = (record: PredictionRecord) => {
+  const { probability } = record;
+
   if (probability < 0.5) {
     return (
       <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium bg-gray-800 text-gray-400 border border-gray-700 opacity-70 cursor-default">
@@ -16,6 +47,7 @@ const getActionBadge = (probability: number) => {
       </span>
     );
   } 
+  
   if (probability >= 0.5 && probability < 0.6) {
     return (
       <button className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium bg-orange-900/30 text-orange-400 border border-orange-700/50 hover:bg-orange-900/50 transition-colors cursor-pointer">
@@ -23,9 +55,15 @@ const getActionBadge = (probability: number) => {
       </button>
     );
   } 
+  
   return (
-    <button className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-900/20 transition-all cursor-pointer animate-in zoom-in duration-300">
-       Crear Oferta
+    <button 
+        onClick={() => sendOfferEmail(record)}
+        className="group/btn inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-900/20 transition-all cursor-pointer animate-in zoom-in duration-300 hover:scale-105 active:scale-95"
+        title="Enviar propuesta por correo"
+    >
+        <Mail size={12} className="group-hover/btn:animate-bounce" />
+        Crear Oferta
     </button>
   );
 };
@@ -93,7 +131,7 @@ export default function PredictionHistory({ history, loading, onOpenRiskModal, o
                     {(r.probability * 100).toFixed(1)}%
                 </td>
                 <td className="px-6 py-4 text-center">
-                    {getActionBadge(r.probability)}
+                    {getActionBadge(r)}
                 </td>
               </tr>
             ))}
