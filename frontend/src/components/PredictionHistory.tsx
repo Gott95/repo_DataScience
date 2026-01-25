@@ -8,7 +8,7 @@ interface PredictionHistoryProps {
     onOpenDrawer: () => void;
 }
 
-// Función para manejar el envío del correo con datos dinámicos
+
 const sendOfferEmail = (record: PredictionRecord) => {
     const randomEmail = `cliente.${Math.floor(Math.random() * 10000)}@empresa.com`;
     
