@@ -8,7 +8,6 @@ import { getHistory } from './services/churnService'
 import type { PredictionRecord } from './types/ChurnTypes'
 import { Activity, Users, TrendingUp } from 'lucide-react' 
 
-// Componente pequeño para las cards
 function StatsCard({ title, value, accentClass, icon: Icon }: { title: string; value: string | number; accentClass?: string, icon?: any }) {
   return (
     <div className="p-6 rounded-xl bg-gray-800/40 border border-gray-700 backdrop-blur-sm flex items-start justify-between hover:bg-gray-800/60 transition-colors">
@@ -49,9 +48,21 @@ function App() {
     setTimeout(() => setDrawerOpen(false), 1600);
   }
 
-  const total = history.length
-  const today = new Date().toISOString().slice(0,10)
-  const predictionsToday = history.filter(h => h.createdAt.slice(0,10) === today).length
+const total = history.length
+
+  const now = new Date()
+  
+  const predictionsToday = history.filter(h => {
+    if (!h.createdAt) return false
+    const date = new Date(h.createdAt)
+    
+    return (
+      date.getDate() === now.getDate() &&
+      date.getMonth() === now.getMonth() &&
+      date.getFullYear() === now.getFullYear()
+    )
+  }).length
+
   const highRisk = history.filter(h => h.prediction?.toLowerCase().includes('high')).length
   const riskRate = total === 0 ? 0 : Math.round((highRisk / total) * 100)
 
