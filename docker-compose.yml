@@ -4,6 +4,7 @@ services:
   db:
     image: postgres:15-alpine
     restart: always
+    container_name: repo_datascience-db-1
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: paty
@@ -13,10 +14,11 @@ services:
     ports:
       - "5432:5432"
 
-  # Servicio Python
+  # Servicio Python (IA)
   churn-service:
     build: ./churn-service
     restart: always
+    container_name: repo_datascience-churn-service-1
     ports:
       - "8000:8000"
 
@@ -24,15 +26,16 @@ services:
   java-app:
     build: ./app
     restart: always
+    container_name: repo_datascience-java-app-1
     ports:
       - "8080:8080"
     environment:
-      # Conexión a la DB (db)
+      
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/churn_insight_db
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: paty
-      # Conexión al servicio de churn (churn-service)
-      CHURN_PREDICT_HOST: 34.10.78.1
+      
+      CHURN_PREDICT_HOST: churn-service
       CHURN_PREDICT_PORT: 8000
     depends_on:
       - db
@@ -40,8 +43,12 @@ services:
 
   # Frontend React
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: "http://34.122.111.255:8080"
     restart: always
+    container_name: repo_datascience-frontend-1
     ports:
       - "80:80"
     depends_on:

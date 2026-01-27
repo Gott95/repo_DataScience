@@ -1,7 +1,8 @@
+import { API_BASE_URL } from "../config";
 import type { PredictionRecord } from "../types/ChurnTypes";
 
 export async function getHistory(): Promise<PredictionRecord[]> {
-  const res = await fetch("http://localhost:8080/api/churn/history", {
+  const res = await fetch(`${API_BASE_URL}/api/churn/history`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });

@@ -1,4 +1,6 @@
 import type { ChurnRequest, ChurnResponse } from "../types/ChurnTypes";
+import { API_BASE_URL } from "../config";
+
 
 export async function predictChurn(request: ChurnRequest): Promise<ChurnResponse> {
   const body = JSON.stringify({
@@ -11,7 +13,7 @@ export async function predictChurn(request: ChurnRequest): Promise<ChurnResponse
     payment_record: request.paymentRecord,
   });
 
-  const res = await fetch("http://localhost:8080/api/churn/predict", {
+  const res = await fetch(`${API_BASE_URL}/api/churn/predict`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body,
