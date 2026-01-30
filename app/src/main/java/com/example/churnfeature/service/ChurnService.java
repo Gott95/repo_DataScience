@@ -16,7 +16,7 @@ public class ChurnService {
 
     private final ChurnRepository repository;
     private final RestTemplate restTemplate;
-    
+
     @Value("${churn.predict.url}")
     private String PREDICT_URL;// "http://localhost:8000/predict";
 
@@ -55,7 +55,7 @@ public class ChurnService {
             entity.setProbability(responseDTO.getProbability());
             repository.save(entity);
         } catch (Exception ex) {
-            
+
         }
 
         return responseDTO;
